@@ -32,8 +32,8 @@ def convert_to_persian(number):
     
     return persian_number
 
-bot_token = os.environ.get('BOT_TOKEN', '7759907035:AAGht_v717Q6II3NsEgmQ5sLB2zBp_8IkOk')
-chat_id = os.environ.get('CHAT_ID', -1002362960489)
+bot_token = '7759907035:AAGht_v717Q6II3NsEgmQ5sLB2zBp_8IkOk'
+chat_id = -1002362960489
 url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
 while True:
     try:
