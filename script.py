@@ -37,7 +37,7 @@ chat_id = -1002362960489
 url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
 while True:
     try:
-        if (datetime.now().hour == 11 and datetime.now().minute == 30) or (datetime.now().hour == 17 and datetime.now().minute == 0) or (datetime.now().hour == 21 and datetime.now().minute == 0)  :
+        if True or (datetime.now().hour == 11 and datetime.now().minute == 30) or (datetime.now().hour == 17 and datetime.now().minute == 0) or (datetime.now().hour == 21 and datetime.now().minute == 0)  :
             response = requests.get("https://milli.gold/api/v1/public/milli-price/detail")
             price = convert_to_persian(int(response.json()['price18']) * 100)
             img = Image.open("./11.png") if datetime.now().hour == 11 else Image.open("./17.png") 
@@ -51,8 +51,8 @@ while True:
             persian_date_text = get_display(arabic_reshaper.reshape(persian_date)).encode().decode('utf-8')
             draw.text((645, 610), persian_date_text, fill =(255, 255, 255), font=persian_date_font)
             draw.text((200, 750), text, fill =(8, 24, 100), font=font)
-            img.save('/var/www/html/instagram_stories/result.png')
-            link = 'https://mahdiyar.me/instagram_stories/result.png'
+            img.save('/var/www/html/result.png')
+            link = 'https://mahdiyar.me/result.png'
             data = {'chat_id': chat_id, 'text': link, 'parse_mode': 'HTML'}
             response = requests.post(url, data=data)
             if response.status_code == 200:
