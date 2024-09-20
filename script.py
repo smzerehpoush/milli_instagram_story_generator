@@ -56,9 +56,9 @@ while True:
             data = {'chat_id': chat_id, 'text': link, 'parse_mode': 'HTML'}
             response = requests.post(url, data=data)
             if response.status_code == 200:
-                print('Message sent successfully.')
+                logging.info('Message sent successfully.')
             else:
-                print(f'Error sending message: {response.text}')
+                logging.info(f'Error sending message: {response.text}')
 
             time.sleep(59)
     except Exception as e:
