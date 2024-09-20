@@ -48,7 +48,7 @@ while True:
             now = JalaliDatetime.now()
             persian_date = now.strftime('%Y/%m/%d')
             text = get_display(arabic_reshaper.reshape(raw_text)).encode().decode('utf-8')
-            persian_date_text = get_display(arabic_reshaper.reshape(persian_date)).encode().decode('utf-8')
+            persian_date_text = get_display(arabic_reshaper.reshape(persian_date))
             draw.text((645, 610), persian_date_text, fill =(255, 255, 255), font=persian_date_font)
             draw.text((200, 750), text, fill =(8, 24, 100), font=font)
             img.save('/var/www/html/result.png')
