@@ -41,8 +41,8 @@ while True:
             response = requests.get("https://milli.gold/api/v1/public/milli-price/detail")
             price = convert_to_persian(int(response.json()['price18']) * 100)
             img = Image.open("./11.png") if datetime.now().hour == 11 else Image.open("./17.png") 
-            font = ImageFont.truetype('./YekanBakhFaNum-SemiBold.woff2',100, encoding='unic')
-            persian_date_font = ImageFont.truetype('./YekanBakhFaNum-SemiBold.woff2',40, encoding='unic')
+            font = ImageFont.truetype('./YekanBakh-VF.ttf',100, encoding='unic')
+            persian_date_font = ImageFont.truetype('./YekanBakh-VF.ttf',40, encoding='unic')
             draw = ImageDraw.Draw(img)
             raw_text = f'{price} ریال'
             now = JalaliDatetime.now()
