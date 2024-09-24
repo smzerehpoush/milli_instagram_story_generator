@@ -5,8 +5,7 @@ WORKDIR /app
 COPY requirements.txt  .
 COPY 11.png .
 COPY 17.png .
-COPY YekanBakh-VF.ttf .
-COPY YekanBakhFaNum-SemiBold.woff2 .
+COPY YekanBakhFaNum-SemiBold.ttf .
 
 RUN pip install -r requirements.txt && rm requirements.txt
 
