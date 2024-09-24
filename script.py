@@ -39,18 +39,20 @@ while True:
     try:
         if True or (datetime.now().hour == 11 and datetime.now().minute == 30) or (datetime.now().hour == 17 and datetime.now().minute == 0) or (datetime.now().hour == 21 and datetime.now().minute == 0)  :
             response = requests.get("https://milli.gold/api/v1/public/milli-price/detail")
-            price = convert_to_persian(int(response.json()['price18']) * 100)
+            price = convert_to_persian(int(response.json()['price18']) * 1000)
             img = Image.open("./11.png") if datetime.now().hour == 11 else Image.open("./17.png") 
-            font = ImageFont.truetype('./YekanBakh-VF.ttf',100, encoding='unic')
-            persian_date_font = ImageFont.truetype('./YekanBakh-VF.ttf',40, encoding='unic')
+            price_font = ImageFont.truetype('./YekanBakhFaNum-SemiBold.ttf',100, encoding='unic')
+            persian_date_font = ImageFont.truetype('./YekanBakhFaNum-SemiBold.ttf',36, encoding='unic')
+            rial_font = ImageFont.truetype('./YekanBakhFaNum-SemiBold.ttf',80, encoding='unic')
             draw = ImageDraw.Draw(img)
-            raw_text = f'{price} ریال'
             now = JalaliDatetime.now()
             persian_date = now.strftime('%Y/%m/%d')
-            text = get_display(arabic_reshaper.reshape(raw_text))
+            price_text = get_display(arabic_reshaper.reshape(price))
             persian_date_text = get_display(arabic_reshaper.reshape(persian_date))
+            rial_text = get_display(arabic_reshaper.reshape('ریال'))
             draw.text((645, 610), persian_date_text, fill =(255, 255, 255), font=persian_date_font)
-            draw.text((200, 750), text, fill =(8, 24, 100), font=font)
+            draw.text((200, 750), rial_text, fill =(61, 64, 74), font=rial_font)
+            draw.text((350, 750), price_text, fill =(5, 16, 97), font=price_font)
             img.save('/var/www/html/result.png')
             link = 'https://mahdiyar.me/result.png'
             data = {'chat_id': chat_id, 'text': link, 'parse_mode': 'HTML'}
@@ -59,8 +61,10 @@ while True:
                 logging.info('Message sent successfully.')
             else:
                 logging.info(f'Error sending message: {response.text}')
-
             time.sleep(59)
+        else:
+            logging.info("it's not time to send message")
     except Exception as e:
         logging.info('bot error {}'.format(e))
+        
 
