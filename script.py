@@ -37,7 +37,7 @@ chat_id = -1002362960489
 url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
 while True:
     try:
-        if True or (datetime.now().hour == 11 and datetime.now().minute == 30) or (datetime.now().hour == 17 and datetime.now().minute == 0) or (datetime.now().hour == 21 and datetime.now().minute == 0)  :
+        if (datetime.now().hour == 11 and datetime.now().minute == 30) or (datetime.now().hour == 17 and datetime.now().minute == 0) or (datetime.now().hour == 21 and datetime.now().minute == 0)  :
             response = requests.get("https://milli.gold/api/v1/public/milli-price/detail")
             price = convert_to_persian(int(response.json()['price18']) * 1000)
             img = Image.open("./11.png") if datetime.now().hour == 11 else Image.open("./17.png") 
