@@ -7,7 +7,7 @@ import logging
 from datetime import datetime
 import time
 import re
-from khayyam import *
+from khayyam import JalaliDatetime
 
 def convert_to_persian(number):
     # Mapping of English digits to Persian digits
@@ -37,7 +37,7 @@ chat_id = -1002362960489
 url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
 while True:
     try:
-        if (datetime.now().hour == 11 and datetime.now().minute == 30) or (datetime.now().hour == 17 and datetime.now().minute == 0) or (datetime.now().hour == 21 and datetime.now().minute == 0)  :
+        if True or (datetime.now().hour == 11 and datetime.now().minute == 30) or (datetime.now().hour == 17 and datetime.now().minute == 0) or (datetime.now().hour == 21 and datetime.now().minute == 0)  :
             response = requests.get("https://milli.gold/api/v1/public/milli-price/detail")
             price = convert_to_persian(int(response.json()['price18']) * 1000)
             img = Image.open("./11.png") if datetime.now().hour == 11 else Image.open("./17.png") 
@@ -58,9 +58,9 @@ while True:
             data = {'chat_id': chat_id, 'text': link, 'parse_mode': 'HTML'}
             response = requests.post(url, data=data)
             if response.status_code == 200:
-                logging.info('Message sent successfully.')
+               logging.info('Message sent successfully.')
             else:
-                logging.info(f'Error sending message: {response.text}')
+               logging.info(f'Error sending message: {response.text}')
             time.sleep(59)
         else:
             logging.info("it's not time to send message")
