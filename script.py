@@ -40,6 +40,7 @@ while True:
         if True or (datetime.now().hour == 11 and datetime.now().minute == 30) or (datetime.now().hour == 17 and datetime.now().minute == 0) or (datetime.now().hour == 21 and datetime.now().minute == 0)  :
             response = requests.get("https://milli.gold/api/v1/public/milli-price/detail")
             price = convert_to_persian(int(response.json()['price18']) * 1000)
+            logging.info(f'milli price {price}')
             img = Image.open("./11.png") if datetime.now().hour == 11 else Image.open("./17.png") 
             price_font = ImageFont.truetype('./YekanBakhFaNum-SemiBold.ttf',100, encoding='unic')
             persian_date_font = ImageFont.truetype('./YekanBakhFaNum-SemiBold.ttf',36, encoding='unic')
